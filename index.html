@@ -1,195 +1,120 @@
-                    <!DOCTYPE html>
-<html lang="en">
+                        <!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Things I Never Said</title>
+<title>Incoming Call Request 📞</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fffaf4;
+    font-family:'Comic Sans MS',cursive;
+    overflow:hidden;
 }
 
-body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #c9e9ff, #fff1f8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+.container{
+    text-align:center;
+    max-width:500px;
 }
 
-.card {
-  width: 90%;
-  max-width: 520px;
-  min-height: 560px;
-  background: white;
-  border-radius: 30px;
-  padding: 30px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
-  position: relative;
+.penguin{
+    font-size:90px;
+    animation:bounce 2s infinite;
 }
 
-.slide {
-  display: none;
-  animation: fade 0.5s ease;
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
 }
 
-.slide.active {
-  display: block;
+.card{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-@keyframes fade {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+h1{
+    color:#444;
 }
 
-.penguin {
-  font-size: 4rem;
-  margin-bottom: 15px;
-  animation: wiggle 1.4s infinite;
+button{
+    padding:12px 25px;
+    margin:10px;
+    border:none;
+    border-radius:15px;
+    font-size:16px;
+    cursor:pointer;
 }
 
-@keyframes wiggle {
-  0%, 100% { transform: rotate(-5deg); }
-  50% { transform: rotate(5deg); }
+.yes{
+    background:#b8f2e6;
 }
 
-h1, h2 {
-  color: #2f3a4a;
-  margin-bottom: 20px;
+.maybe{
+    background:#ffe5b4;
 }
 
-p {
-  color: #444;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-
-button {
-  margin-top: 20px;
-  padding: 13px 24px;
-  border: none;
-  border-radius: 30px;
-  background: #6aa9ff;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #4d93ee;
-}
-
-.small {
-  font-size: 0.9rem;
-  opacity: 0.7;
-}
-
-.heart {
-  position: fixed;
-  bottom: -20px;
-  font-size: 20px;
-  animation: float 6s linear infinite;
-  opacity: 0.6;
-}
-
-@keyframes float {
-  from { transform: translateY(0); opacity: 0; }
-  20% { opacity: 0.8; }
-  to { transform: translateY(-110vh); opacity: 0; }
+#message{
+    margin-top:20px;
+    font-size:18px;
+    color:#555;
+    min-height:60px;
 }
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
+<div class="penguin">🐧</div>
+
 <div class="card">
 
-  <div class="slide active">
-    <div class="penguin">🐧</div>
-    <h1>Things I Never Said</h1>
-    <p>This is not an apology paragraph.</p>
-    <p>This is just a small archive of things I should have said better.</p>
-    <p class="small">Proceed carefully. Penguin emotions ahead.</p>
-    <button onclick="nextSlide()">Start</button>
-  </div>
+<h1>Official Penguin Request</h1>
 
-  <div class="slide">
-    <h2>1. What I Got Wrong</h2>
-    <p>I made things heavier than they needed to be.</p>
-    <p>I reacted badly when I should have understood better.</p>
-    <p>And sometimes, instead of making you feel safe, I made you feel tired.</p>
-    <button onclick="nextSlide()">Next</button>
-  </div>
+<p>
+The penguin would like to speak to the avocado.
+</p>
 
-  <div class="slide">
-    <h2>2. What I Learned</h2>
-    <p>I learned that effort is not just saying sorry.</p>
-    <p>It is listening properly.</p>
-    <p>It is not repeating the same thing again.</p>
-    <p>It is making someone feel peaceful, not responsible for your emotions.</p>
-    <button onclick="nextSlide()">Next</button>
-  </div>
+<p>
+No fights.<br>
+No serious discussions.<br>
+Just one tiny call.
+</p>
 
-  <div class="slide">
-    <h2>3. What I Admire About You</h2>
-    <p>You stayed in moments where most people would have left.</p>
-    <p>You listened to things you never signed up for.</p>
-    <p>You became important in the most unexpected and inconvenient way.</p>
-    <button onclick="nextSlide()">Next</button>
-  </div>
+<button class="yes" onclick="yes()">📞 Fine, call me</button>
+<button class="maybe" onclick="maybe()">🥑 Let me think</button>
 
-  <div class="slide">
-    <h2>4. What I’ll Carry Forward</h2>
-    <p>The calls.</p>
-    <p>The stupid jokes.</p>
-    <p>The “God’s plan” trauma.</p>
-    <p>The way even your annoying lines became familiar.</p>
-    <button onclick="nextSlide()">Last one</button>
-  </div>
+<div id="message"></div>
 
-  <div class="slide">
-    <div class="penguin">🐧</div>
-    <h2>5. Thank You</h2>
-    <p>You don’t have to reply to this.</p>
-    <p>You don’t have to forgive anything because of this.</p>
-    <p>I just wanted you to know that you mattered to me.</p>
-    <p>A lot.</p>
-    <p class="small">Okay bye, the penguin is pretending to be normal now.</p>
-  </div>
-
+</div>
 </div>
 
 <script>
-let currentSlide = 0;
-const slides = document.querySelectorAll(".slide");
 
-function nextSlide() {
-  slides[currentSlide].classList.remove("active");
-  currentSlide++;
-  slides[currentSlide].classList.add("active");
+function yes(){
+document.getElementById("message").innerHTML=
+"🐧 Mission Successful.<br><br>The penguin is now waiting near the phone pretending not to be excited.";
 }
 
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "♡";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-  document.body.appendChild(heart);
+function maybe(){
+const msgs=[
+"🐧 Application moved from 'Rejected' to 'Under Review'.",
+"🐧 Penguin has decided to wait dramatically.",
+"🐧 Avocado response detected. Hope restored.",
+"🐧 Small progress is still progress."
+];
 
-  setTimeout(() => {
-    heart.remove();
-  }, 7000);
+document.getElementById("message").innerHTML=
+msgs[Math.floor(Math.random()*msgs.length)];
 }
 
-setInterval(createHeart, 600);
 </script>
 
 </body>
