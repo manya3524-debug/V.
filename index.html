@@ -232,21 +232,13 @@ Just a little conversation and maybe a smile.
 
 <div class="buttons">
 
-<button class="yes" onclick="yesReply()">
-Approve Call
-</button>
+<button class="yes" onclick="yesReply()">Approve Call</button>
+<button class="maybe" onclick="maybeReply()">Maybe</button>
+<button class="no" id="noBtn" onclick="moveNo()">Reject?</button>
 
-<button class="maybe" onclick="maybeReply()">
-Maybe
-</button>
-
-<button class="no" id="noBtn" onclick="moveNo()">
-Reject?
-</button>
 
 </div>
-
-<div id="reply"></div>
+  <div id="reply"></div>
 
 <div class="footer">
 Current Status: Manya waiting respectfully 📞
@@ -254,8 +246,7 @@ Current Status: Manya waiting respectfully 📞
 
 </div>
 </div>
-
-<script>
+  <script>
 
 const cards = [
 
@@ -278,6 +269,7 @@ const cards = [
 "🥺 Pretty please?",
 
 "✨ Final request before I run out of reasons."
+
 ];
 
 let currentCard = 0;
@@ -286,46 +278,110 @@ function yesReply(){
 
 document.getElementById("reply").innerHTML =
 
-`<div class="mini-card">
-✅ Application Approved.
+`
+<div class="mini-card">
+
+<h2>📞 Incoming Call</h2>
+
+<br>
+
+💗 Zyaan is being summoned...
+
 <br><br>
-Manya is now trying very hard to act normal.
-</div>`;
+
+Manya is waiting.
+
+<br><br>
+
+<button onclick="callConnected()">
+Answer Call ❤️
+</button>
+
+</div>
+`;
+
+}
+
+function callConnected(){
+
+document.getElementById("reply").innerHTML =
+
+`
+<div class="mini-card">
+
+📞 Call Connected
+
+<br><br>
+
+💗 Congratulations.
+
+<br><br>
+
+You have successfully unlocked:
+
+<br><br>
+
+✨ Random conversations<br>
+✨ Bakwas<br>
+✨ Memes<br>
+✨ Refusing to hang up
+
+<br><br>
+
+❤️ Thank you for approving the application.
+
+</div>
+`;
 
 }
 
 function maybeReply(){
 
+const reply = document.getElementById("reply");
+
 if(currentCard < cards.length){
 
-document.getElementById("reply").innerHTML =
+reply.innerHTML =
 
-`<div class="mini-card">
+`
+<div class="mini-card">
+
 ${cards[currentCard]}
+
 <br><br>
+
 <button class="nextBtn" onclick="maybeReply()">
 Next Reason →
 </button>
-</div>`;
+
+</div>
+`;
 
 currentCard++;
 
-}
+}else{
 
-else{
+reply.innerHTML =
 
-document.getElementById("reply").innerHTML =
+`
+<div class="mini-card">
 
-`<div class="mini-card">
 🎉 Final Stage Reached
+
 <br><br>
+
 Dear Zyaan,
+
 <br><br>
+
 Can Manya have one tiny call?
-<br>
-That's the entire application.
+
+<br><br>
+
 💗
-</div>`;
+
+</div>
+`;
 
 currentCard = 0;
 
@@ -337,15 +393,12 @@ function moveNo(){
 
 const btn = document.getElementById("noBtn");
 
-btn.style.position = "absolute";
-
-btn.style.left = Math.random()*250 + "px";
-
-btn.style.top = Math.random()*350 + "px";
+btn.style.position = "relative";
+btn.style.left = (Math.random()*120-60) + "px";
+btn.style.top = (Math.random()*80-40) + "px";
 
 }
 
-</script>
+  </script>
+</body> 
 
-</body>
-</html>
