@@ -1,120 +1,263 @@
-                        <!DOCTYPE html>
-<html>
+            <!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Incoming Call Request 📞</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Zyaan 🧸📞</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap');
+
+*{box-sizing:border-box}
+
 body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#fffaf4;
-    font-family:'Comic Sans MS',cursive;
-    overflow:hidden;
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#fff7ed,#ffe4ec,#e7fff7);
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
 }
 
-.container{
-    text-align:center;
-    max-width:500px;
+.bg span{
+  position:absolute;
+  font-size:28px;
+  animation:float 9s linear infinite;
+  opacity:.65;
 }
 
-.penguin{
-    font-size:90px;
-    animation:bounce 2s infinite;
+.bg span:nth-child(1){left:8%; animation-delay:0s;}
+.bg span:nth-child(2){left:24%; animation-delay:2s;}
+.bg span:nth-child(3){left:45%; animation-delay:1s;}
+.bg span:nth-child(4){left:67%; animation-delay:3s;}
+.bg span:nth-child(5){left:84%; animation-delay:1.5s;}
+
+@keyframes float{
+  0%{bottom:-60px; transform:translateX(0) rotate(0);}
+  100%{bottom:110vh; transform:translateX(45px) rotate(360deg);}
 }
 
-@keyframes bounce{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-15px);}
+.wrapper{
+  width:92%;
+  max-width:440px;
+  text-align:center;
+  position:relative;
+}
+
+.teddy{
+  font-size:82px;
+  margin-bottom:-10px;
+  animation:bob 2s infinite;
+}
+
+@keyframes bob{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
 }
 
 .card{
-    background:white;
-    padding:30px;
-    border-radius:25px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  background:rgba(255,255,255,.9);
+  border:3px solid white;
+  border-radius:35px;
+  padding:28px 22px;
+  box-shadow:0 22px 55px rgba(0,0,0,.14);
+}
+
+.badge{
+  display:inline-block;
+  background:#fff0b8;
+  padding:8px 15px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:10px;
 }
 
 h1{
-    color:#444;
+  font-family:'Pacifico',cursive;
+  font-size:35px;
+  margin:8px 0 12px;
+  color:#2f2f2f;
+}
+
+.note{
+  background:#fffaf3;
+  border:2px dashed #ffc6d3;
+  border-radius:22px;
+  padding:16px;
+  font-size:15px;
+  line-height:1.7;
+  color:#444;
+}
+
+.phone{
+  font-size:55px;
+  margin:18px 0 5px;
+  animation:ring 1.3s infinite;
+}
+
+@keyframes ring{
+  0%,100%{transform:rotate(0);}
+  20%{transform:rotate(12deg);}
+  40%{transform:rotate(-12deg);}
+  60%{transform:rotate(8deg);}
+  80%{transform:rotate(-8deg);}
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:18px;
 }
 
 button{
-    padding:12px 25px;
-    margin:10px;
-    border:none;
-    border-radius:15px;
-    font-size:16px;
-    cursor:pointer;
+  border:none;
+  padding:14px 18px;
+  border-radius:18px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
+  transition:.2s;
 }
 
-.yes{
-    background:#b8f2e6;
+button:active{transform:scale(.95)}
+
+.yes{background:#a7f3d0;}
+.maybe{background:#fde68a;}
+.no{background:#ffd1dc;}
+
+#reply{
+  margin-top:18px;
+  min-height:85px;
+  font-size:16px;
+  line-height:1.6;
+  color:#333;
+  font-weight:600;
 }
 
-.maybe{
-    background:#ffe5b4;
+.mini-card{
+  background:#fff9ef;
+  border:2px dashed #ffc6d3;
+  padding:15px;
+  border-radius:18px;
+  animation:pop .3s ease;
 }
 
-#message{
-    margin-top:20px;
-    font-size:18px;
-    color:#555;
-    min-height:60px;
+.mini-card button{
+  margin-top:10px;
+  background:#ffd6e7;
+}
+
+@keyframes pop{
+  from{transform:scale(.8); opacity:0;}
+  to{transform:scale(1); opacity:1;}
+}
+
+.footer{
+  margin-top:12px;
+  font-size:13px;
+  color:#777;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<div class="penguin">🐧</div>
-
-<div class="card">
-
-<h1>Official Penguin Request</h1>
-
-<p>
-The penguin would like to speak to the avocado.
-</p>
-
-<p>
-No fights.<br>
-No serious discussions.<br>
-Just one tiny call.
-</p>
-
-<button class="yes" onclick="yes()">📞 Fine, call me</button>
-<button class="maybe" onclick="maybe()">🥑 Let me think</button>
-
-<div id="message"></div>
-
+<div class="bg">
+  <span>💗</span>
+  <span>✨</span>
+  <span>🧸</span>
+  <span>📞</span>
+  <span>🌸</span>
 </div>
+
+<div class="wrapper">
+  <div class="teddy">🧸</div>
+
+  <div class="card">
+    <div class="badge">Very important teddy matter</div>
+
+    <h1>Hi Zyaan</h1>
+
+    <div class="note">
+      One cute teddy is requesting one tiny call.<br><br>
+      No fight.<br>
+      No drama.<br>
+      No serious case file.<br>
+      Just thodi si bakchodi and thodi si peace.
+    </div>
+
+    <div class="phone">📞</div>
+
+    <div class="buttons">
+      <button class="yes" onclick="yesReply()">Approve Call</button>
+      <button class="maybe" onclick="maybeReply()">Maybe</button>
+      <button class="no" id="noBtn" onclick="moveNo()">Reject?</button>
+    </div>
+
+    <div id="reply"></div>
+
+    <div class="footer">
+      Current status: teddy waiting respectfully 🧸
+    </div>
+  </div>
 </div>
 
 <script>
-
-function yes(){
-document.getElementById("message").innerHTML=
-"🐧 Mission Successful.<br><br>The penguin is now waiting near the phone pretending not to be excited.";
-}
-
-function maybe(){
-const msgs=[
-"🐧 Application moved from 'Rejected' to 'Under Review'.",
-"🐧 Penguin has decided to wait dramatically.",
-"🐧 Avocado response detected. Hope restored.",
-"🐧 Small progress is still progress."
+const cards = [
+  "🥺 Zyaan please, just 5 minutes?",
+  "🧸 I promise no fighting.",
+  "🌸 We can talk about literally anything random.",
+  "📞 Just one tiny call, not a whole court hearing.",
+  "🥺 Teddy is requesting very politely.",
+  "✨ You can even say 'application under review'.",
+  "🧸 I’ll behave. Mostly.",
+  "💗 Pretty please?",
+  "🌙 One call and I’ll stop being dramatic.",
+  "🧸 Final teddy request: call?"
 ];
 
-document.getElementById("message").innerHTML=
-msgs[Math.floor(Math.random()*msgs.length)];
+let currentCard = 0;
+
+function yesReply(){
+  document.getElementById("reply").innerHTML =
+  `<div class="mini-card">
+    ✅ Application approved.<br><br>
+    Teddy is now smiling like an idiot and waiting for the call.
+  </div>`;
 }
 
+function maybeReply(){
+  if(currentCard < cards.length){
+    document.getElementById("reply").innerHTML =
+    `<div class="mini-card">
+      ${cards[currentCard]}
+      <br><br>
+      <button onclick="maybeReply()">Next reason →</button>
+    </div>`;
+    currentCard++;
+  } else {
+    document.getElementById("reply").innerHTML =
+    `<div class="mini-card">
+      🎉 Final stage reached.<br><br>
+      Dear Zyaan,<br>
+      can this tiny teddy get one tiny call?
+    </div>`;
+    currentCard = 0;
+  }
+}
+
+function moveNo(){
+  const btn = document.getElementById("noBtn");
+  btn.style.position = "absolute";
+  btn.style.left = Math.random() * 250 + "px";
+  btn.style.top = Math.random() * 390 + "px";
+}
 </script>
 
 </body>
